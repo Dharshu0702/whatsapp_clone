@@ -1,0 +1,5 @@
+{
+  "watch": ["*.js", "routes", "models", "middleware", "config", "socket"],
+  "ext": "js",
+  "ignore": [".env", "*.json", "node_modules", "check-messages.js"]
+}
