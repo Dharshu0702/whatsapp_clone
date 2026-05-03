@@ -6,6 +6,7 @@ import { useSocket } from '../../context/SocketContext';
 import { fetchMessages, sendMessage as sendMessageAPI } from '../../services/api';
 import MessageBubble from './MessageBubble';
 import MessageInput from './MessageInput';
+import ContactProfilePanel from './ContactProfilePanel';
 import './ChatWindow.css';
 
 const ChatWindow = ({ chat, onMessageSent }) => {
@@ -15,6 +16,7 @@ const ChatWindow = ({ chat, onMessageSent }) => {
   const [loading, setLoading] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [showScrollBtn, setShowScrollBtn] = useState(false);
+  const [showContactProfile, setShowContactProfile] = useState(false);
   const messagesEndRef = useRef(null);
   const messagesContainerRef = useRef(null);
   const prevChatRef = useRef(null);
@@ -146,17 +148,24 @@ const ChatWindow = ({ chat, onMessageSent }) => {
     <div className="chat-window" id="chat-window">
       {/* Header */}
       <div className="chat-header" id="chat-header">
-        <div className="chat-header-avatar">
-          {otherUser?.profilePicture ? (
-            <img src={otherUser.profilePicture} alt={otherUser.username} className="chat-header-avatar-img" />
-          ) : (
-            otherUser?.avatar || otherUser?.username?.[0]?.toUpperCase()
-          )}
-        </div>
-        <div className="chat-header-info">
-          <div className="chat-header-name">{otherUser?.username}</div>
-          <div className={`chat-header-status ${isTyping ? 'typing' : isOnline ? 'online' : ''}`}>
-            {isTyping ? 'typing...' : isOnline ? 'online' : 'offline'}
+        <div
+          className="chat-header-profile-trigger"
+          onClick={() => setShowContactProfile(true)}
+          title="View contact info"
+          id="chat-header-profile-trigger"
+        >
+          <div className="chat-header-avatar">
+            {otherUser?.profilePicture ? (
+              <img src={otherUser.profilePicture} alt={otherUser.username} className="chat-header-avatar-img" />
+            ) : (
+              otherUser?.avatar || otherUser?.username?.[0]?.toUpperCase()
+            )}
+          </div>
+          <div className="chat-header-info">
+            <div className="chat-header-name">{otherUser?.username}</div>
+            <div className={`chat-header-status ${isTyping ? 'typing' : isOnline ? 'online' : ''}`}>
+              {isTyping ? 'typing...' : isOnline ? 'online' : 'offline'}
+            </div>
           </div>
         </div>
       </div>
@@ -206,6 +215,14 @@ const ChatWindow = ({ chat, onMessageSent }) => {
 
       {/* Message Input */}
       <MessageInput chatId={chat._id} onSend={handleSendMessage} />
+
+      {/* Contact Profile Panel */}
+      {showContactProfile && otherUser && (
+        <ContactProfilePanel
+          userId={otherUser._id}
+          onClose={() => setShowContactProfile(false)}
+        />
+      )}
     </div>
   );
 };

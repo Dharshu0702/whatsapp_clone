@@ -6,11 +6,10 @@ A full-stack real-time messaging application built with the MERN stack and Socke
 
 - Real-time messaging with Socket.IO
 - User authentication (JWT)
-- Profile page with picture upload/update/delete
+- Responsive WhatsApp-themed dark UI
 - Online/offline status indicators
 - Typing indicators
-- Message timestamps and read receipts
-- Responsive WhatsApp-themed dark UI
+- Profile page with picture upload/update/delete
 - Profile pictures visible to all users
 
 ## Tech Stack
@@ -35,7 +34,7 @@ whatsapp_AG/
 │       └── services/       # API service (Axios)
 ├── server/                 # Express backend
 │   ├── config/             # Database connection
-│   ├── middleware/          # JWT auth middleware
+│   ├── middleware/         # JWT auth middleware
 │   ├── models/             # User, Chat, Message schemas
 │   ├── routes/             # auth, users, chats, messages
 │   └── socket/             # Socket.IO event handlers
@@ -53,8 +52,8 @@ whatsapp_AG/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/whatsapp_AG.git
-cd whatsapp_AG
+git clone https://github.com/Dharshu0702/whatsapp_clone.git
+cd whatsapp_clone
 ```
 
 ### 2. Setup the backend

@@ -70,6 +70,22 @@
   border-left: 1px solid var(--wa-border);
 }
 
+.chat-header-profile-trigger {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: var(--radius-lg);
+  transition: background var(--transition-fast);
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-header-profile-trigger:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
 .chat-header-avatar {
   width: 40px;
   height: 40px;
