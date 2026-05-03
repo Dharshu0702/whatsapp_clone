@@ -151,12 +151,4 @@ npm run dev
 ![Messages Collection](screenshots/messages_collection.png)
 
 ### Chats Collection
-![Chats Collection](creenshots/chats_collection.png)
-
-### Clone repo 
- npm install (both folders)
- Create free Atlas cluster
- Copy connection string to .env
- npm run seed (creates demo users)
- npm start + npm run dev
- Open localhost:5173 
+![Chats Collection](screenshots/chats_collection.png)
